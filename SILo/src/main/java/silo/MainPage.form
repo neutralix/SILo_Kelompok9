@@ -20,14 +20,14 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deliveryNoteMenuMouseClicked"/>
           </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="createDeliveryNoteMenu">
+            <Menu class="javax.swing.JMenu" name="createDeliveryNoteMenu">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Create Delivery Note"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="createDeliveryNoteMenuMouseClicked"/>
               </Events>
-            </MenuItem>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="invoiceMenu">

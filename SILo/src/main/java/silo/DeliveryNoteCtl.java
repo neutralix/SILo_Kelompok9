@@ -21,19 +21,18 @@ public class DeliveryNoteCtl {
         this.dbHandler = dbHandler;
         this.deliveryNoteDetailPage = deliveryNoteDetailPage;
         this.deliveryNoteForm = deliveryNoteForm;
-        
     }    
 
     void getDeliveryNoteDescription() {
 //        String[] result = dbHandler.getDeliveryNoteDescription();
-//        DeliveryNote deliveryNote = createDeliveryNote(result);
+//        DeliveryNote[] deliveryNote = createDeliveryNote(result);
 
         deliveryNoteDetailPage.setVisible(true);
 //        send delivery note data to detail page
 //        deliveryNoteDetailPage.viewDeliveryNoteDescription(invoice);
     }
 
-    private DeliveryNote createDeliveryNote(String[] result) {
+    private DeliveryNote[] createDeliveryNote(String[] result) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -43,5 +42,18 @@ public class DeliveryNoteCtl {
 
     void requestDeliveryNoteForm() {
         deliveryNoteForm.setVisible(true);
+    }
+
+    void sendDeliveryNoteData() {
+        deliveryNoteForm.setVisible(false);
+//        enter data to dbhandler
+//        step 15
+        dbHandler.addNewItem();
+//        step 16 17
+        String[] result = dbHandler.getListOfDeliveryNote();
+        DeliveryNote[] deliveryNote = createDeliveryNote(result);
+        
+//        add data to delivery note detail page
+        deliveryNoteDetailPage.setVisible(true);
     }
 }

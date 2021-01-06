@@ -31,6 +31,7 @@ public class Silo {
         newItemForm = new ItemForm();
         invoiceDetailPage = new InvoiceDetailPage();
         deliveryNoteDetailPage = new DeliveryNoteDetailPage();
+        deliveryNoteForm = new DeliveryNoteForm();
         
         viewItemCtl = new ViewItemCtl(mainPage, dbHandler);
         itemCtl = new ItemCtl(mainPage, dbHandler, newItemForm);
@@ -42,6 +43,7 @@ public class Silo {
         newItemForm.setCtl(itemCtl);
         invoiceDetailPage.setCtl(invoiceCtl);
         deliveryNoteDetailPage.setCtl(deliveryNoteCtl);
+        deliveryNoteForm.setCtl(deliveryNoteCtl);
         mainPage.setCtl(viewItemCtl, itemCtl, viewDeliveryNoteCtl, deliveryNoteCtl, viewInvoiceCtl, invoiceCtl);
         
         java.awt.EventQueue.invokeLater(new Runnable(){

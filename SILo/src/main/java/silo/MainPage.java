@@ -54,7 +54,7 @@ public class MainPage extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         itemMenu = new javax.swing.JMenu();
         deliveryNoteMenu = new javax.swing.JMenu();
-        createDeliveryNoteMenu = new javax.swing.JMenuItem();
+        createDeliveryNoteMenu = new javax.swing.JMenu();
         invoiceMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -414,7 +414,7 @@ public class MainPage extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    private javax.swing.JMenuItem createDeliveryNoteMenu;
+    private javax.swing.JMenu createDeliveryNoteMenu;
     private javax.swing.JMenu deliveryNoteMenu;
     private javax.swing.JTable deliveryNoteTable;
     private javax.swing.JButton editBtn;
