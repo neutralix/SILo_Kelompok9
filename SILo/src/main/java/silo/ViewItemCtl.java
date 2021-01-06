@@ -11,9 +11,14 @@ package silo;
  */
 public class ViewItemCtl {
     
-    private DBHandler dbHandler;
     private MainPage mainPage;
+    private DBHandler dbHandler;
 
+    public ViewItemCtl(MainPage mainPage, DBHandler dbHandler) {
+        this.mainPage = mainPage;
+        this.dbHandler = dbHandler;
+    }
+    
     public void getListOfItem() {
         String[] result = dbHandler.getListOfItem();
         Item[] item = createItem(result);

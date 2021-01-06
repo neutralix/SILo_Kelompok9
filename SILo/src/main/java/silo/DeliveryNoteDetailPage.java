@@ -9,14 +9,14 @@ package silo;
  *
  * @author Mystery-PC
  */
-public class InvoiceDetailPage extends javax.swing.JFrame {
-    
-    private InvoiceCtl invoiceCtl;
+public class DeliveryNoteDetailPage extends javax.swing.JFrame {
+
+    private DeliveryNoteCtl deliveryNoteCtl;
     
     /**
-     * Creates new form InvoiceDetailPage
+     * Creates new form DeliveryNoteDetailPage
      */
-    public InvoiceDetailPage() {
+    public DeliveryNoteDetailPage() {
         initComponents();
     }
 
@@ -30,15 +30,23 @@ public class InvoiceDetailPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        acceptBtn = new javax.swing.JButton();
+        preparingBtn = new javax.swing.JButton();
+        signBtn = new javax.swing.JButton();
         pendingBtn = new javax.swing.JButton();
 
         jLabel1.setText("detail info");
 
-        acceptBtn.setText("Accept");
-        acceptBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+        preparingBtn.setText("Preparing");
+        preparingBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acceptBtnMouseClicked(evt);
+                preparingBtnMouseClicked(evt);
+            }
+        });
+
+        signBtn.setText("Sign");
+        signBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signBtnMouseClicked(evt);
             }
         });
 
@@ -60,10 +68,12 @@ public class InvoiceDetailPage extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(acceptBtn)
-                        .addGap(26, 26, 26)
+                        .addComponent(preparingBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(signBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pendingBtn)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,7 +82,8 @@ public class InvoiceDetailPage extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(acceptBtn)
+                    .addComponent(preparingBtn)
+                    .addComponent(signBtn)
                     .addComponent(pendingBtn))
                 .addGap(28, 28, 28))
         );
@@ -80,15 +91,20 @@ public class InvoiceDetailPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void acceptBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acceptBtnMouseClicked
+    private void preparingBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preparingBtnMouseClicked
         // TODO add your handling code here:
-        invoiceCtl.changeInvoiceStatus("completed");
-    }//GEN-LAST:event_acceptBtnMouseClicked
+        deliveryNoteCtl.changeDeliveryNoteStatus("preparing");
+    }//GEN-LAST:event_preparingBtnMouseClicked
 
     private void pendingBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingBtnMouseClicked
         // TODO add your handling code here:
-        invoiceCtl.changeInvoiceStatus("pending");
+        deliveryNoteCtl.changeDeliveryNoteStatus("pending");
     }//GEN-LAST:event_pendingBtnMouseClicked
+
+    private void signBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signBtnMouseClicked
+        // TODO add your handling code here:
+        deliveryNoteCtl.changeDeliveryNoteStatus("completed");
+    }//GEN-LAST:event_signBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -107,35 +123,32 @@ public class InvoiceDetailPage extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InvoiceDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InvoiceDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InvoiceDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InvoiceDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InvoiceDetailPage().setVisible(true);
+                new DeliveryNoteDetailPage().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton acceptBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton pendingBtn;
+    private javax.swing.JButton preparingBtn;
+    private javax.swing.JButton signBtn;
     // End of variables declaration//GEN-END:variables
 
-    void viewInvoiceDescription(Invoice invoice) {
-//        show invoice data to detail page
-    }
-
-    void setCtl(InvoiceCtl invoiceCtl) {
-        this.invoiceCtl = invoiceCtl;
+    void setCtl(DeliveryNoteCtl deliveryNoteCtl) {
+        this.deliveryNoteCtl = deliveryNoteCtl;
     }
 }

@@ -11,13 +11,17 @@ package silo;
  */
 public class ItemCtl {
 
-    private ItemForm2 newItemForm;
-    private DBHandler dbHandler;
     private MainPage mainPage;
+    private DBHandler dbHandler;
+    private ItemForm newItemForm;
+
+    public ItemCtl(MainPage mainPage, DBHandler dbHandler, ItemForm newItemForm) {
+        this.mainPage = mainPage;
+        this.dbHandler = dbHandler;
+        this.newItemForm = newItemForm;
+    }
     
-    
-    public void requestItemForm(ItemForm2 form) {
-        newItemForm = form;
+    public void requestItemForm() {
         newItemForm.setVisible(true);
     }
 

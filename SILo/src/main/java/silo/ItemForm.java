@@ -9,10 +9,12 @@ package silo;
  *
  * @author Mystery-PC
  */
-public class ItemForm extends javax.swing.JPanel {
+public class ItemForm extends javax.swing.JFrame {
 
+    private ItemCtl itemCtl;
+    
     /**
-     * Creates new form ItemForm
+     * Creates new form ItemForm2
      */
     public ItemForm() {
         initComponents();
@@ -27,6 +29,9 @@ public class ItemForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        exceptionDialog = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        cancelButton = new javax.swing.JButton();
         itemIdLabel = new javax.swing.JLabel();
         barcodeLabel = new javax.swing.JLabel();
         titleLabel = new javax.swing.JLabel();
@@ -41,6 +46,47 @@ public class ItemForm extends javax.swing.JPanel {
         manufacturerTF = new javax.swing.JTextField();
         urlTF = new javax.swing.JTextField();
         numberOfStockTF = new javax.swing.JTextField();
+        submitButton = new javax.swing.JButton();
+
+        exceptionDialog.setSize(new java.awt.Dimension(400, 200));
+
+        jLabel1.setText("All field must be filled !");
+
+        cancelButton.setText("Cancel");
+        cancelButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout exceptionDialogLayout = new javax.swing.GroupLayout(exceptionDialog.getContentPane());
+        exceptionDialog.getContentPane().setLayout(exceptionDialogLayout);
+        exceptionDialogLayout.setHorizontalGroup(
+            exceptionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exceptionDialogLayout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(jLabel1)
+                .addContainerGap(149, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exceptionDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cancelButton)
+                .addGap(117, 117, 117))
+        );
+        exceptionDialogLayout.setVerticalGroup(
+            exceptionDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(exceptionDialogLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(cancelButton)
+                .addContainerGap(207, Short.MAX_VALUE))
+        );
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         itemIdLabel.setText("item id");
 
@@ -56,44 +102,56 @@ public class ItemForm extends javax.swing.JPanel {
 
         numberOfStockLabel.setText("number of stock");
 
-        itemIdTF.setText("jTextField1");
+        itemIdTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
-        barcodeTF.setText("jTextField2");
+        barcodeTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
-        titleTF.setText("jTextField3");
+        titleTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
-        descriptionTF.setText("jTextField4");
+        descriptionTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
-        manufacturerTF.setText("jTextField5");
+        manufacturerTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
-        urlTF.setText("jTextField6");
+        urlTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
-        numberOfStockTF.setText("jTextField7");
+        numberOfStockTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        submitButton.setText("Submit");
+        submitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitButtonMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(numberOfStockLabel)
-                    .addComponent(itemIdLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(barcodeLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descriptionLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manufacturerLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(urlLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(barcodeTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(itemIdTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titleTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(descriptionTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manufacturerTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(urlTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(numberOfStockTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(97, 97, 97))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(numberOfStockLabel)
+                            .addComponent(itemIdLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(barcodeLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(descriptionLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(manufacturerLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(urlLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(itemIdTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(barcodeTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titleTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descriptionTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(manufacturerTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(urlTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(numberOfStockTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(submitButton)))
+                .addGap(58, 58, 58))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,25 +184,102 @@ public class ItemForm extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numberOfStockLabel)
                     .addComponent(numberOfStockTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(submitButton)
+                .addGap(28, 28, 28))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
+        // TODO add your handling code here:
+        
+//        send all field data
+        if (isFieldEmpty() == 0)
+            itemCtl.sendData();
+        else {
+            exceptionDialog.setVisible(true);
+        }
+    }//GEN-LAST:event_submitButtonMouseClicked
+
+    private void cancelButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelButtonMouseClicked
+        // TODO add your handling code here:
+        cancelAddNewItem();
+    }//GEN-LAST:event_cancelButtonMouseClicked
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ItemForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ItemForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ItemForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ItemForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ItemForm().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel barcodeLabel;
     private javax.swing.JTextField barcodeTF;
+    private javax.swing.JButton cancelButton;
     private javax.swing.JLabel descriptionLabel;
     private javax.swing.JTextField descriptionTF;
+    private javax.swing.JDialog exceptionDialog;
     private javax.swing.JLabel itemIdLabel;
     private javax.swing.JTextField itemIdTF;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel manufacturerLabel;
     private javax.swing.JTextField manufacturerTF;
     private javax.swing.JLabel numberOfStockLabel;
     private javax.swing.JTextField numberOfStockTF;
+    private javax.swing.JButton submitButton;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JTextField titleTF;
     private javax.swing.JLabel urlLabel;
     private javax.swing.JTextField urlTF;
     // End of variables declaration//GEN-END:variables
+
+    void setCtl(ItemCtl itemCtl) {
+        this.itemCtl = itemCtl;
+    }
+
+    private int isFieldEmpty() {
+        return 0;
+//        return 1;
+    }
+
+    private void cancelAddNewItem() {
+        exceptionDialog.setVisible(false);
+        itemCtl.cancelAddNewItem();
+    }
 }

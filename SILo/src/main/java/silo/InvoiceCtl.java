@@ -11,15 +11,20 @@ package silo;
  */
 public class InvoiceCtl {
     
-    private InvoiceDetailPage invoiceDetailPage;
-    private DBHandler dbHandler;
     private MainPage mainPage;
+    private DBHandler dbHandler;
+    private InvoiceDetailPage invoiceDetailPage;
+
+    public InvoiceCtl(MainPage mainPage, DBHandler dbHandler, InvoiceDetailPage invoiceDetailPage) {
+        this.mainPage = mainPage;
+        this.dbHandler = dbHandler;
+        this.invoiceDetailPage = invoiceDetailPage;
+    }
     
-    void getInvoiceDescription(InvoiceDetailPage invoiceDP) {
+    void getInvoiceDescription() {
 //        String[] result = dbHandler.getInvoiceDescription();
 //        Invoice invoice = createInvoice(result);
 
-        invoiceDetailPage = invoiceDP;
         invoiceDetailPage.setVisible(true);
 //        send invoice data to detail page
 //        invoiceDetailPage.viewInvoiceDescription(invoice);

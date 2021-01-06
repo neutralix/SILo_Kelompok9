@@ -11,8 +11,13 @@ package silo;
  */
 public class ViewInvoiceCtl {
 
-    private DBHandler dbHandler;
     private MainPage mainPage;
+    private DBHandler dbHandler;
+    
+    public ViewInvoiceCtl(MainPage mainPage, DBHandler dbHandler) {
+        this.mainPage = mainPage;
+        this.dbHandler = dbHandler;
+    }
     
     public void getListOfInvoice() {
         String[] result = dbHandler.getListOfInvoice();
@@ -25,7 +30,7 @@ public class ViewInvoiceCtl {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void searchItem(String text) {
+    void searchInvoice(String text) {
         String[] result = dbHandler.searchInvoice(text);
         Invoice[] invoice = createInvoice(result);
         
