@@ -18,6 +18,16 @@ public class Item {
     private String url;
     private int numberOfStock;
 
+    public Item(String itemId, String barcode, String title, String description, String manufacturer, String url, int numberOfStock) {
+        this.itemId = itemId;
+        this.barcode = barcode;
+        this.title = title;
+        this.description = description;
+        this.manufacturer = manufacturer;
+        this.url = url;
+        this.numberOfStock = numberOfStock;
+    }
+
     public String getItemId() {
         return itemId;
     }
@@ -44,6 +54,30 @@ public class Item {
 
     public int getNumberOfStock() {
         return numberOfStock;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setNumberOfStock(int numberOfStock) {
+        this.numberOfStock = numberOfStock;
     }
 
     public void setDescription(String description) {

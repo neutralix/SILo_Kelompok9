@@ -48,12 +48,20 @@ public class DeliveryNoteCtl {
         deliveryNoteForm.setVisible(false);
 //        enter data to dbhandler
 //        step 15
-        dbHandler.addNewItem();
+//        dbHandler.addNewItem();
 //        step 16 17
-        String[] result = dbHandler.getListOfDeliveryNote();
-        DeliveryNote[] deliveryNote = createDeliveryNote(result);
+//        String[] result = dbHandler.getListOfDeliveryNote();
+//        DeliveryNote[] deliveryNote = createDeliveryNote(result);
         
 //        add data to delivery note detail page
         deliveryNoteDetailPage.setVisible(true);
+    }
+
+    void sendSoftcopyDone() {
+        deliveryNoteDetailPage.setVisible(false);
+    }
+
+    void printDeliveryNote() {
+        deliveryNoteDetailPage.setVisible(false);
     }
 }

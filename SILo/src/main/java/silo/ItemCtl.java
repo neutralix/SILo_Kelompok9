@@ -21,19 +21,43 @@ public class ItemCtl {
         this.newItemForm = newItemForm;
     }
     
-    public void requestItemForm() {
+    public void requestNewItemForm() {
+        newItemForm.setState(1);
+        newItemForm.clearForm();
+        
+        newItemForm.setVisible(true);
+    }
+    public void requestEditItemForm() {
+        newItemForm.setState(2);
+        newItemForm.clearForm();
+        
+        Item[] item = dbHandler.getListOfItem();
+        newItemForm.prepareEditedItem(item[mainPage.getEditedItemNo()]);
+        
         newItemForm.setVisible(true);
     }
 
-    public void sendData() {
+    public void sendData(Item item) {
         newItemForm.setVisible(false);
+        
 //        enter data to dbhandler
-        dbHandler.addNewItem();
+        dbHandler.addNewItem(item);
+        
+        mainPage.refreshListOfItem();
+    }
+    
+    public void sendUpdateData(Item item) {
+        newItemForm.setVisible(false);
+        
+//        enter data to dbhandler
+        dbHandler.editItemDescription(item);
+        
         mainPage.refreshListOfItem();
     }
 
     public void cancelAddNewItem() {
         newItemForm.setVisible(false);
     }
+
     
 }

@@ -20,21 +20,37 @@ public class ViewItemCtl {
     }
     
     public void getListOfItem() {
-        String[] result = dbHandler.getListOfItem();
-        Item[] item = createItem(result);
+        Item[] item = dbHandler.getListOfItem();
         
-        mainPage.showListOfItem(item);
-    }
-
-    private Item[] createItem(String[] result) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object[][] data = new Object[item.length][7];
+        for(int i=0; i<item.length; i++){
+            data[i][0] = item[i].getItemId();
+            data[i][1] = item[i].getBarcode();
+            data[i][2] = item[i].getTitle();
+            data[i][3] = item[i].getDescription();
+            data[i][4] = item[i].getManufacturer();
+            data[i][5] = item[i].getUrl();
+            data[i][6] = item[i].getNumberOfStock();
+        }
+        
+        mainPage.showListOfItem(data);
     }
 
     public void searchItem(String text) {
-        String[] result = dbHandler.searchItem(text);
-        Item[] item = createItem(result);
+        Item[] item = dbHandler.searchItem(text);
         
-        mainPage.showListOfItem(item);
+        Object[][] data = new Object[item.length][7];
+        for(int i=0; i<item.length; i++){
+            data[i][0] = item[i].getItemId();
+            data[i][1] = item[i].getBarcode();
+            data[i][2] = item[i].getTitle();
+            data[i][3] = item[i].getDescription();
+            data[i][4] = item[i].getManufacturer();
+            data[i][5] = item[i].getUrl();
+            data[i][6] = item[i].getNumberOfStock();
+        }
+        
+        mainPage.showListOfItem(data);
     }
     
 }

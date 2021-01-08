@@ -12,7 +12,7 @@ package silo;
 public class ItemForm extends javax.swing.JFrame {
 
     private ItemCtl itemCtl;
-    
+    private int state;
     /**
      * Creates new form ItemForm2
      */
@@ -196,10 +196,32 @@ public class ItemForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         
 //        send all field data
-        if (isFieldEmpty() == 0)
-            itemCtl.sendData();
+        if (state == 1) {
+            if (isFieldEmpty() == 0)
+                itemCtl.sendData(new Item(
+                    itemIdTF.getText(),
+                    barcodeTF.getText(),
+                    titleTF.getText(),
+                    descriptionTF.getText(),
+                    manufacturerTF.getText(),
+                    urlTF.getText(),
+                    Integer.parseInt(numberOfStockTF.getText())
+                )
+            );
+            else {
+                exceptionDialog.setVisible(true);
+            }
+        }
         else {
-            exceptionDialog.setVisible(true);
+            itemCtl.sendUpdateData(new Item(
+                itemIdTF.getText(),
+                barcodeTF.getText(),
+                titleTF.getText(),
+                descriptionTF.getText(),
+                manufacturerTF.getText(),
+                urlTF.getText(),
+                Integer.parseInt(numberOfStockTF.getText())
+            ));
         }
     }//GEN-LAST:event_submitButtonMouseClicked
 
@@ -274,12 +296,47 @@ public class ItemForm extends javax.swing.JFrame {
     }
 
     private int isFieldEmpty() {
-        return 0;
-//        return 1;
+        if (itemIdTF.getText().equals("") || barcodeTF.getText().equals("") || titleTF.getText().equals("") || descriptionTF.getText().equals("") || manufacturerTF.getText().equals("") || urlTF.getText().equals("") || numberOfStockTF.getText().equals(""))
+            return 1;
+        else
+            return 0;
     }
 
     private void cancelAddNewItem() {
         exceptionDialog.setVisible(false);
         itemCtl.cancelAddNewItem();
+    }
+
+    void clearForm() {
+        itemIdTF.setText("");
+        barcodeTF.setText("");
+        titleTF.setText("");
+        descriptionTF.setText("");
+        manufacturerTF.setText("");
+        urlTF.setText("");
+        numberOfStockTF.setText("");
+        
+        if(state == 1)
+            submitButton.setText("Submit");
+        else 
+            submitButton.setText("Update");
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+    void prepareEditedItem() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void prepareEditedItem(Item item) {
+        itemIdTF.setText(item.getItemId());
+        barcodeTF.setText(item.getBarcode());
+        titleTF.setText(item.getTitle());
+        descriptionTF.setText(item.getDescription());
+        manufacturerTF.setText(item.getManufacturer());
+        urlTF.setText(item.getUrl());
+        numberOfStockTF.setText(Integer.toString(item.getNumberOfStock()));
     }
 }

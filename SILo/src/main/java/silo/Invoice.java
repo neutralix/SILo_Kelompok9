@@ -5,6 +5,7 @@
  */
 package silo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -12,18 +13,31 @@ import java.util.Date;
  * @author Mystery-PC
  */
 public class Invoice {
-    private int invoiceNumber;
-    private int deliveryNoteNumber;
+    private String invoiceNumber;
+    private String deliveryNoteNumber;
     private String customerName;
     private Date orderDate;
     private Date deliveryDate;
     private String status;
+    
+    private SimpleDateFormat dateFormat;
+    
+    public Invoice(String invoiceNumber, String deliveryNoteNumber, String customerName, Date orderDate, Date deliveryDate, String status) {
+        this.invoiceNumber = invoiceNumber;
+        this.deliveryNoteNumber = deliveryNoteNumber;
+        this.customerName = customerName;
+        this.orderDate = orderDate;
+        this.deliveryDate = deliveryDate;
+        this.status = status;
+        
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    }
 
-    public int getInvoiceNumber() {
+    public String getInvoiceNumber() {
         return invoiceNumber;
     }
 
-    public int getDeliveryNoteNumber() {
+    public String getDeliveryNoteNumber() {
         return deliveryNoteNumber;
     }
 
@@ -31,12 +45,12 @@ public class Invoice {
         return customerName;
     }
 
-    public Date getOrderDate() {
-        return orderDate;
+    public String getOrderDate() {
+        return dateFormat.format(orderDate);
     }
 
-    public Date getDeliveryDate() {
-        return deliveryDate;
+    public String getDeliveryDate() {
+        return dateFormat.format(deliveryDate);
     }
 
     public String getStatus() {

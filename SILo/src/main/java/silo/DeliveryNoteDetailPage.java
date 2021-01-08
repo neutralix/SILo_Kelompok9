@@ -29,10 +29,99 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sendingForm = new javax.swing.JFrame();
+        jLabel2 = new javax.swing.JLabel();
+        emailTF = new javax.swing.JTextField();
+        sendBtn = new javax.swing.JButton();
+        printDialog = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        okButton = new javax.swing.JButton();
+        barcodeCB = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         preparingBtn = new javax.swing.JButton();
         signBtn = new javax.swing.JButton();
         pendingBtn = new javax.swing.JButton();
+        emailBtn = new javax.swing.JButton();
+        printBtn = new javax.swing.JButton();
+
+        sendingForm.setSize(new java.awt.Dimension(400, 250));
+
+        jLabel2.setText("Email");
+
+        emailTF.setPreferredSize(new java.awt.Dimension(200, 22));
+
+        sendBtn.setText("Send");
+        sendBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sendBtnMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout sendingFormLayout = new javax.swing.GroupLayout(sendingForm.getContentPane());
+        sendingForm.getContentPane().setLayout(sendingFormLayout);
+        sendingFormLayout.setHorizontalGroup(
+            sendingFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sendingFormLayout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addGroup(sendingFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sendBtn)
+                    .addGroup(sendingFormLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(85, 85, 85)
+                        .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(48, 48, 48))
+        );
+        sendingFormLayout.setVerticalGroup(
+            sendingFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sendingFormLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(sendingFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(sendBtn)
+                .addContainerGap(194, Short.MAX_VALUE))
+        );
+
+        printDialog.setSize(new java.awt.Dimension(400, 300));
+
+        jLabel3.setText("Select print options");
+
+        okButton.setText("OK");
+        okButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                okButtonMouseClicked(evt);
+            }
+        });
+
+        barcodeCB.setText("show barcode");
+
+        javax.swing.GroupLayout printDialogLayout = new javax.swing.GroupLayout(printDialog.getContentPane());
+        printDialog.getContentPane().setLayout(printDialogLayout);
+        printDialogLayout.setHorizontalGroup(
+            printDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(printDialogLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(printDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(barcodeCB)
+                    .addComponent(jLabel3))
+                .addContainerGap(249, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, printDialogLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(okButton)
+                .addGap(78, 78, 78))
+        );
+        printDialogLayout.setVerticalGroup(
+            printDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(printDialogLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(barcodeCB)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(okButton)
+                .addContainerGap(178, Short.MAX_VALUE))
+        );
 
         jLabel1.setText("detail info");
 
@@ -57,35 +146,53 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
             }
         });
 
+        emailBtn.setText("Email");
+        emailBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                emailBtnMouseClicked(evt);
+            }
+        });
+
+        printBtn.setText("Print");
+        printBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                printBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(preparingBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(signBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pendingBtn)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                        .addComponent(pendingBtn)
+                        .addGap(70, 70, 70)
+                        .addComponent(printBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(emailBtn))
+                    .addComponent(preparingBtn)
+                    .addComponent(jLabel1))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
+                .addComponent(preparingBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(preparingBtn)
                     .addComponent(signBtn)
-                    .addComponent(pendingBtn))
-                .addGap(28, 28, 28))
+                    .addComponent(pendingBtn)
+                    .addComponent(printBtn)
+                    .addComponent(emailBtn))
+                .addGap(11, 11, 11))
         );
 
         pack();
@@ -105,6 +212,29 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         deliveryNoteCtl.changeDeliveryNoteStatus("completed");
     }//GEN-LAST:event_signBtnMouseClicked
+
+    private void emailBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailBtnMouseClicked
+        // TODO add your handling code here:
+        sendingForm.setVisible(true);
+    }//GEN-LAST:event_emailBtnMouseClicked
+
+    private void sendBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendBtnMouseClicked
+        // TODO add your handling code here:
+
+//        tampilin alert
+
+        sendSoftcopyDone();
+    }//GEN-LAST:event_sendBtnMouseClicked
+
+    private void printBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printBtnMouseClicked
+        // TODO add your handling code here:
+        printDialog.setVisible(true);
+    }//GEN-LAST:event_printBtnMouseClicked
+
+    private void okButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_okButtonMouseClicked
+        // TODO add your handling code here:
+        printDeliveryNote();
+    }//GEN-LAST:event_okButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -142,13 +272,33 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox barcodeCB;
+    private javax.swing.JButton emailBtn;
+    private javax.swing.JTextField emailTF;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton okButton;
     private javax.swing.JButton pendingBtn;
     private javax.swing.JButton preparingBtn;
+    private javax.swing.JButton printBtn;
+    private javax.swing.JDialog printDialog;
+    private javax.swing.JButton sendBtn;
+    private javax.swing.JFrame sendingForm;
     private javax.swing.JButton signBtn;
     // End of variables declaration//GEN-END:variables
 
     void setCtl(DeliveryNoteCtl deliveryNoteCtl) {
         this.deliveryNoteCtl = deliveryNoteCtl;
+    }
+
+    private void sendSoftcopyDone() {
+        sendingForm.setVisible(false);
+        deliveryNoteCtl.sendSoftcopyDone();
+    }
+
+    private void printDeliveryNote() {
+        printDialog.setVisible(false);
+        deliveryNoteCtl.printDeliveryNote();
     }
 }
