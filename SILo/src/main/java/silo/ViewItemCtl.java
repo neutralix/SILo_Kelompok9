@@ -53,4 +53,17 @@ public class ViewItemCtl {
         mainPage.showListOfItem(data);
     }
     
+    int findItemNo(String name) {
+        int i = 0;
+        Item[] item = dbHandler.getListOfItem();
+        
+        for(i=0; i<item.length; i++){
+            Item temp = item[i];
+            if(temp.getItemId().equals(name)) {
+                break;
+            }
+        }
+        
+        return i;
+    }
 }

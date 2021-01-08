@@ -58,6 +58,5 @@ public class ItemCtl {
     public void cancelAddNewItem() {
         newItemForm.setVisible(false);
     }
-
     
 }

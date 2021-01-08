@@ -14,18 +14,18 @@ import java.util.Date;
  */
 public class Invoice {
     private String invoiceNumber;
-    private String deliveryNoteNumber;
-    private String customerName;
+    private String poNumber;
+    private String supplierName;
     private Date orderDate;
     private Date deliveryDate;
     private String status;
     
     private SimpleDateFormat dateFormat;
     
-    public Invoice(String invoiceNumber, String deliveryNoteNumber, String customerName, Date orderDate, Date deliveryDate, String status) {
+    public Invoice(String invoiceNumber, String poNumber, String customerName, Date orderDate, Date deliveryDate, String status) {
         this.invoiceNumber = invoiceNumber;
-        this.deliveryNoteNumber = deliveryNoteNumber;
-        this.customerName = customerName;
+        this.poNumber = poNumber;
+        this.supplierName = customerName;
         this.orderDate = orderDate;
         this.deliveryDate = deliveryDate;
         this.status = status;
@@ -37,12 +37,12 @@ public class Invoice {
         return invoiceNumber;
     }
 
-    public String getDeliveryNoteNumber() {
-        return deliveryNoteNumber;
+    public String getPoNumber() {
+        return poNumber;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getSupplierName() {
+        return supplierName;
     }
 
     public String getOrderDate() {

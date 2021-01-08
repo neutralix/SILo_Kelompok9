@@ -21,15 +21,13 @@ public class DeliveryNoteCtl {
         this.dbHandler = dbHandler;
         this.deliveryNoteDetailPage = deliveryNoteDetailPage;
         this.deliveryNoteForm = deliveryNoteForm;
-    }    
+    }
 
     void getDeliveryNoteDescription() {
-//        String[] result = dbHandler.getDeliveryNoteDescription();
-//        DeliveryNote[] deliveryNote = createDeliveryNote(result);
-
+        DeliveryNote[] deliveryNote = dbHandler.getListOfDeliveryNote();
+        deliveryNoteDetailPage.prepareViewedDeliveryNote(deliveryNote[mainPage.getViewedDeliveryNoteNo()]);
+        
         deliveryNoteDetailPage.setVisible(true);
-//        send delivery note data to detail page
-//        deliveryNoteDetailPage.viewDeliveryNoteDescription(invoice);
     }
 
     private DeliveryNote[] createDeliveryNote(String[] result) {

@@ -20,21 +20,49 @@ public class ViewInvoiceCtl {
     }
     
     public void getListOfInvoice() {
-        String[] result = dbHandler.getListOfInvoice();
-        Invoice[] invoice = createInvoice(result);
+        Invoice[] invoice = dbHandler.getListOfInvoice();
         
-        mainPage.showListOfInvoice(invoice);
-    }
-
-    private Invoice[] createInvoice(String[] result) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object[][] data = new Object[invoice.length][6];
+        for(int i=0; i<invoice.length; i++){
+            data[i][0] = invoice[i].getInvoiceNumber();
+            data[i][1] = invoice[i].getPoNumber();
+            data[i][2] = invoice[i].getSupplierName();
+            data[i][3] = invoice[i].getOrderDate();
+            data[i][4] = invoice[i].getDeliveryDate();
+            data[i][5] = invoice[i].getStatus();
+        }
+        
+        mainPage.showListOfInvoice(data);
     }
 
     void searchInvoice(String text) {
-        String[] result = dbHandler.searchInvoice(text);
-        Invoice[] invoice = createInvoice(result);
+        Invoice[] invoice = dbHandler.searchInvoice(text);
         
-        mainPage.showListOfInvoice(invoice);
+        Object[][] data = new Object[invoice.length][6];
+        for(int i=0; i<invoice.length; i++){
+            data[i][0] = invoice[i].getInvoiceNumber();
+            data[i][1] = invoice[i].getPoNumber();
+            data[i][2] = invoice[i].getSupplierName();
+            data[i][3] = invoice[i].getOrderDate();
+            data[i][4] = invoice[i].getDeliveryDate();
+            data[i][5] = invoice[i].getStatus();
+        }
+        
+        mainPage.showListOfInvoice(data);
+    }
+
+    int findInvoiceNo(String name) {
+        int i = 0;
+        Invoice[] invoice = dbHandler.getListOfInvoice();
+        
+        for(i=0; i<invoice.length; i++){
+            Invoice temp = invoice[i];
+            if(temp.getInvoiceNumber().equals(name)) {
+                break;
+            }
+        }
+        
+        return i;
     }
     
 }

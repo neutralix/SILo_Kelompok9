@@ -60,13 +60,13 @@ public class DBHandler {
                 String[] str = data.split("/");
                 Date orderDate = null, deliveryDate = null;
                 try{
-                    orderDate = dateFormat.parse(str[4]);
-                    deliveryDate = dateFormat.parse(str[5]);
+                    orderDate = dateFormat.parse(str[3]);
+                    deliveryDate = dateFormat.parse(str[4]);
                 } catch(ParseException e){
                     
                 }
                 
-                invoices.add(new Invoice(str[0], str[1], str[2], orderDate, deliveryDate, str[3]));
+                invoices.add(new Invoice(str[0], str[1], str[2], orderDate, deliveryDate, str[5]));
             }
         } catch(FileNotFoundException e){
             
@@ -90,7 +90,7 @@ public class DBHandler {
                     
                 }
                 
-                deliveryNotes.add(new DeliveryNote(str[0], str[1], str[2], orderDate, deliveryDate, str[3]));
+                deliveryNotes.add(new DeliveryNote(str[0], str[1], str[2], str[3], orderDate, deliveryDate, str[6]));
             }
         } catch(FileNotFoundException e){
             
@@ -125,7 +125,6 @@ public class DBHandler {
 
     public void addNewItem(Item item) {
         items.add(item);
-        
         try{
             FileWriter itemDbWriter = new FileWriter("ItemDB.txt");
             
@@ -183,24 +182,64 @@ public class DBHandler {
         }
     }
 
-    public String[] getListOfInvoice() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Invoice[] getListOfInvoice() {
+        Invoice[] data = new Invoice[invoices.size()];
+        for(int i=0; i<invoices.size(); i++)
+            data[i] = invoices.get(i);
+        
+        return data;
     }
 
-    public String[] searchInvoice(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Invoice[] searchInvoice(String text) {
+        List<Invoice> matchedInvoice = new ArrayList<Invoice>();
+        for(int i=0; i<invoices.size(); i++){
+            Invoice temp = invoices.get(i);
+            if(temp.getInvoiceNumber().toLowerCase().contains(text) || temp.getPoNumber().toLowerCase().contains(text))
+                matchedInvoice.add(temp);
+        }
+        
+        Invoice[] data = new Invoice[matchedInvoice.size()];
+        for(int i=0; i<matchedInvoice.size(); i++)
+            data[i] = matchedInvoice.get(i);
+        
+        return data;
     }
 
-    public String[] getInvoiceDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void changeInvoiceStatus(String status, String invoiceNumber) {
+        for(int i=0; i<invoices.size(); i++){
+            Invoice temp = invoices.get(i);
+            if(temp.getInvoiceNumber().equals(invoiceNumber)){
+                temp.setStatus(status);
+                break;
+            }
+        }
+        
+        try{
+            FileWriter invoiceDbWriter = new FileWriter("InvoiceDB.txt");
+            
+            for(int i=0; i<invoices.size(); i++){
+                Invoice temp = invoices.get(i);
+                invoiceDbWriter.write(
+                    temp.getInvoiceNumber() + "/" +
+                    temp.getPoNumber() + "/" +
+                    temp.getSupplierName() + "/" +
+                    temp.getOrderDate() + "/" +
+                    temp.getDeliveryDate() + "/" +
+                    temp.getStatus() + "\n"
+                );
+            }
+            invoiceDbWriter.close();
+        } catch(IOException e){
+            System.out.println("An error occurred.");
+        }
     }
 
-    void changeInvoiceStatus(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    String[] getListOfDeliveryNote() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    DeliveryNote[] getListOfDeliveryNote() {
+        DeliveryNote[] data = new DeliveryNote[deliveryNotes.size()];
+        for(int i=0; i<deliveryNotes.size(); i++)
+            data[i] = deliveryNotes.get(i);
+        
+        return data;
     }
 
     String[] searchDeliveryNote(String text) {

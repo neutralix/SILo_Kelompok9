@@ -326,10 +326,6 @@ public class ItemForm extends javax.swing.JFrame {
         this.state = state;
     }
 
-    void prepareEditedItem() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     void prepareEditedItem(Item item) {
         itemIdTF.setText(item.getItemId());
         barcodeTF.setText(item.getBarcode());

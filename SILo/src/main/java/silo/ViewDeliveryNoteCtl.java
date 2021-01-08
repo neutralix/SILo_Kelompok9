@@ -20,21 +20,41 @@ public class ViewDeliveryNoteCtl {
     }
     
     public void getListOfDeliveryNote() {
-        String[] result = dbHandler.getListOfDeliveryNote();
-        DeliveryNote[] deliveryNote = createDeliveryNote(result);
+        DeliveryNote[] deliveryNote = dbHandler.getListOfDeliveryNote();
         
-        mainPage.showListOfDeliveryNote(deliveryNote);
-    }
-
-    private DeliveryNote[] createDeliveryNote(String[] result) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Object[][] data = new Object[deliveryNote.length][7];
+        for(int i=0; i<deliveryNote.length; i++){
+            data[i][0] = deliveryNote[i].getInvoiceNumber();
+            data[i][1] = deliveryNote[i].getDeliveryNoteNumber();
+            data[i][2] = deliveryNote[i].getCustomerName();
+            data[i][3] = deliveryNote[i].getCustomerEmailAddress();
+            data[i][4] = deliveryNote[i].getOrderDate();
+            data[i][5] = deliveryNote[i].getDeliveryDate();
+            data[i][6] = deliveryNote[i].getStatus();
+        }
+        
+        mainPage.showListOfDeliveryNote(data);
     }
 
     void searchDeliveryNote(String text) {
         String[] result = dbHandler.searchDeliveryNote(text);
-        DeliveryNote[] deliveryNote = createDeliveryNote(result);
+//        DeliveryNote[] deliveryNote = createDeliveryNote(result);
         
-        mainPage.showListOfDeliveryNote(deliveryNote);
+//        mainPage.showListOfDeliveryNote(deliveryNote);
+    }
+    
+    int findDeliveryNoteNo(String name) {
+        int i = 0;
+        DeliveryNote[] deliveryNote = dbHandler.getListOfDeliveryNote();
+        
+        for(i=0; i<deliveryNote.length; i++){
+            DeliveryNote temp = deliveryNote[i];
+            if(temp.getDeliveryNoteNumber().equals(name)) {
+                break;
+            }
+        }
+        
+        return i;
     }
     
 }

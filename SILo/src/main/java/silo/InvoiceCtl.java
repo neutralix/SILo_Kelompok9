@@ -22,20 +22,18 @@ public class InvoiceCtl {
     }
     
     void getInvoiceDescription() {
-//        String[] result = dbHandler.getInvoiceDescription();
-//        Invoice invoice = createInvoice(result);
-
+        Invoice[] invoice = dbHandler.getListOfInvoice();
+        invoiceDetailPage.prepareViewedInvoice(invoice[mainPage.getViewedInvoiceNo()]);
+        
         invoiceDetailPage.setVisible(true);
-//        send invoice data to detail page
-//        invoiceDetailPage.viewInvoiceDescription(invoice);
     }
 
-    private Invoice createInvoice(String[] result) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    void changeInvoiceStatus(String status) {
-        dbHandler.changeInvoiceStatus(status);
+    void changeInvoiceStatus(String status, String invoiceNumber) {
+        invoiceDetailPage.setVisible(false);
+        
+        dbHandler.changeInvoiceStatus(status, invoiceNumber);
+        
+        mainPage.refreshListOfInvoice();
     }
     
 }
