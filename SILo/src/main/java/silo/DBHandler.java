@@ -242,17 +242,75 @@ public class DBHandler {
         return data;
     }
 
-    String[] searchDeliveryNote(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    DeliveryNote[] searchDeliveryNote(String text) {
+        List<DeliveryNote> matchedDeliveryNote = new ArrayList<DeliveryNote>();
+        for(int i=0; i<deliveryNotes.size(); i++){
+            DeliveryNote temp = deliveryNotes.get(i);
+            if(temp.getInvoiceNumber().toLowerCase().contains(text) || temp.getDeliveryNoteNumber().toLowerCase().contains(text) ||
+                temp.getCustomerName().toLowerCase().contains(text) || temp.getCustomerEmailAddress().toLowerCase().contains(text) ||
+                temp.getOrderDate().toLowerCase().contains(text) || temp.getDeliveryDate().toLowerCase().contains(text) ||
+                temp.getStatus().toLowerCase().contains(text))
+                matchedDeliveryNote.add(temp);
+        }
+        
+        DeliveryNote[] data = new DeliveryNote[matchedDeliveryNote.size()];
+        for(int i=0; i<matchedDeliveryNote.size(); i++)
+            data[i] = matchedDeliveryNote.get(i);
+        
+        return data;
     }
 
-    String[] getDeliveryNoteDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void changeDeliveryNoteStatus(String status, String deliveryNoteNumber) {
+        for(int i=0; i<deliveryNotes.size(); i++){
+            DeliveryNote temp = deliveryNotes.get(i);
+            if(temp.getDeliveryNoteNumber().equals(deliveryNoteNumber)){
+                temp.setStatus(status);
+                break;
+            }
+        }
+        
+        try{
+            FileWriter deliveryNoteDbWriter = new FileWriter("DeliveryNoteDB.txt");
+            
+            for(int i=0; i<deliveryNotes.size(); i++){
+                DeliveryNote temp = deliveryNotes.get(i);
+                deliveryNoteDbWriter.write(
+                    temp.getInvoiceNumber() + "/" +
+                    temp.getDeliveryNoteNumber() + "/" +
+                    temp.getCustomerName() + "/" +
+                    temp.getCustomerEmailAddress() + "/" +
+                    temp.getOrderDate() + "/" +
+                    temp.getDeliveryDate() + "/" +
+                    temp.getStatus() + "\n"
+                );
+            }
+            deliveryNoteDbWriter.close();
+        } catch(IOException e){
+            System.out.println("An error occurred.");
+        }
     }
 
-    void changeDeliveryNoteStatus(String status) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void createNewDeliveryNote(DeliveryNote deliveryNote) {
+        deliveryNotes.add(deliveryNote);
+        try{
+            FileWriter deliveryNoteDbWriter = new FileWriter("DeliveryNoteDB.txt");
+            
+            for(int i=0; i<deliveryNotes.size(); i++){
+                DeliveryNote temp = deliveryNotes.get(i);
+                deliveryNoteDbWriter.write(
+                    temp.getInvoiceNumber() + "/" +
+                    temp.getDeliveryNoteNumber() + "/" +
+                    temp.getCustomerName() + "/" +
+                    temp.getCustomerEmailAddress() + "/" +
+                    temp.getOrderDate() + "/" +
+                    temp.getDeliveryDate() + "/" +
+                    temp.getStatus() + "\n"
+                );
+            }
+            deliveryNoteDbWriter.close();
+        } catch(IOException e){
+            System.out.println("An error occurred.");
+        }
     }
-
     
 }

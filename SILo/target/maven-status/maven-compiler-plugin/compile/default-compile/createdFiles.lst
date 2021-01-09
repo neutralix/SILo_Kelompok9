@@ -23,17 +23,13 @@ silo\MainPage$9.class
 silo\DeliveryNoteCtl.class
 silo\DeliveryNote.class
 silo\DeliveryNoteDetailPage$1.class
-silo\DeliveryNoteForm$3.class
 silo\DeliveryNoteDetailPage$6.class
-silo\MainPage$12.class
 silo\MainPage$6.class
 silo\ViewInvoiceCtl.class
 silo\MainPage$1.class
 silo\MainPage.class
-silo\DeliveryNoteDetailPage$8.class
 silo\DeliveryNoteDetailPage$3.class
 silo\ItemForm.class
-silo\ItemForm$4.class
 silo\InvoiceDetailPage$1.class
 silo\MainPage$3.class
 silo\Silo.class
@@ -44,4 +40,3 @@ silo\MainPage$5.class
 silo\ItemForm$2.class
 silo\Invoice.class
 silo\DeliveryNoteDetailPage$5.class
-silo\InvoiceDetailPage$3.class

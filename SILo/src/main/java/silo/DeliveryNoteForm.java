@@ -5,6 +5,10 @@
  */
 package silo;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author Mystery-PC
@@ -12,12 +16,15 @@ package silo;
 public class DeliveryNoteForm extends javax.swing.JFrame {
 
     private DeliveryNoteCtl deliveryNoteCtl;
+    private SimpleDateFormat dateFormat;
     
     /**
      * Creates new form DeliveryNoteForm2
      */
     public DeliveryNoteForm() {
         initComponents();
+        
+        dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     }
 
     /**
@@ -38,14 +45,12 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
         customerEmailAddressLabel = new javax.swing.JLabel();
         orderDateLabel = new javax.swing.JLabel();
         deliveryDateLabel = new javax.swing.JLabel();
-        statusLabel = new javax.swing.JLabel();
         invoiceNumberTF = new javax.swing.JTextField();
         deliveryNoteNumberTF = new javax.swing.JTextField();
         customerNameTF = new javax.swing.JTextField();
         customerEmailAddressTF = new javax.swing.JTextField();
         orderDateTF = new javax.swing.JTextField();
         deliveryDateTF = new javax.swing.JTextField();
-        statusTF = new javax.swing.JTextField();
         createBtn = new javax.swing.JButton();
 
         confirmationMessage.setSize(new java.awt.Dimension(400, 200));
@@ -94,8 +99,6 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
 
         deliveryDateLabel.setText("delivery date");
 
-        statusLabel.setText("status label");
-
         invoiceNumberTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
         deliveryNoteNumberTF.setPreferredSize(new java.awt.Dimension(200, 22));
@@ -107,8 +110,6 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
         orderDateTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
         deliveryDateTF.setPreferredSize(new java.awt.Dimension(200, 22));
-
-        statusTF.setPreferredSize(new java.awt.Dimension(200, 22));
 
         createBtn.setText("Create");
         createBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,7 +131,6 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(invoiceNumberLabel)
-                            .addComponent(statusLabel)
                             .addComponent(deliveryDateLabel)
                             .addComponent(orderDateLabel)
                             .addComponent(customerEmailAddressLabel)
@@ -143,8 +143,7 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
                             .addComponent(customerNameTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(customerEmailAddressTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(orderDateTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(deliveryDateTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(statusTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(deliveryDateTF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
@@ -174,11 +173,7 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deliveryDateLabel)
                     .addComponent(deliveryDateTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(statusLabel)
-                    .addComponent(statusTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(createBtn)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
@@ -195,42 +190,6 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         confirmAdd();
     }//GEN-LAST:event_okButtonMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DeliveryNoteForm().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog confirmationMessage;
@@ -249,16 +208,41 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
     private javax.swing.JButton okButton;
     private javax.swing.JLabel orderDateLabel;
     private javax.swing.JTextField orderDateTF;
-    private javax.swing.JLabel statusLabel;
-    private javax.swing.JTextField statusTF;
     // End of variables declaration//GEN-END:variables
 
     private void confirmAdd() {
         confirmationMessage.setVisible(false);
-        deliveryNoteCtl.sendDeliveryNoteData();
+        
+        Date orderDate = null, deliveryDate = null;
+        try{
+            orderDate = dateFormat.parse(orderDateTF.getText());
+            deliveryDate = dateFormat.parse(deliveryDateTF.getText());
+        } catch(ParseException e){
+
+        }
+        
+        deliveryNoteCtl.sendDeliveryNoteData(new DeliveryNote(
+                invoiceNumberTF.getText(),
+                deliveryNoteNumberTF.getText(),
+                customerNameTF.getText(),
+                customerEmailAddressTF.getText(),
+                orderDate,
+                deliveryDate,
+                "new"
+            )
+        );
     }
 
     void setCtl(DeliveryNoteCtl deliveryNoteCtl) {
         this.deliveryNoteCtl = deliveryNoteCtl;
+    }
+
+    void clearForm() {
+        invoiceNumberTF.setText("");
+        deliveryNoteNumberTF.setText("");
+        customerNameTF.setText("");
+        customerEmailAddressTF.setText("");
+        orderDateTF.setText("");
+        deliveryDateTF.setText("");
     }
 }

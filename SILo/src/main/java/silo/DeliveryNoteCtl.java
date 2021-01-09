@@ -34,24 +34,26 @@ public class DeliveryNoteCtl {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    void changeDeliveryNoteStatus(String status) {
-        dbHandler.changeDeliveryNoteStatus(status);
+    void changeDeliveryNoteStatus(String status, String deliveryNoteNumber) {
+        deliveryNoteDetailPage.setVisible(false);
+        
+        dbHandler.changeDeliveryNoteStatus(status, deliveryNoteNumber);
+        
+        mainPage.refreshListOfDeliveryNote();
     }
 
     void requestDeliveryNoteForm() {
+        deliveryNoteForm.clearForm();
         deliveryNoteForm.setVisible(true);
     }
 
-    void sendDeliveryNoteData() {
+    void sendDeliveryNoteData(DeliveryNote deliveryNote) {
         deliveryNoteForm.setVisible(false);
-//        enter data to dbhandler
-//        step 15
-//        dbHandler.addNewItem();
-//        step 16 17
-//        String[] result = dbHandler.getListOfDeliveryNote();
-//        DeliveryNote[] deliveryNote = createDeliveryNote(result);
         
-//        add data to delivery note detail page
+        dbHandler.createNewDeliveryNote(deliveryNote);
+
+        mainPage.refreshListOfDeliveryNote();
+        deliveryNoteDetailPage.prepareViewedDeliveryNote(deliveryNote);
         deliveryNoteDetailPage.setVisible(true);
     }
 

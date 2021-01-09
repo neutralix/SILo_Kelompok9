@@ -37,6 +37,8 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
         barcodeCB = new javax.swing.JCheckBox();
+        alert = new javax.swing.JDialog();
+        alertLabel = new javax.swing.JLabel();
         preparingBtn = new javax.swing.JButton();
         signBtn = new javax.swing.JButton();
         pendingBtn = new javax.swing.JButton();
@@ -75,13 +77,15 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         sendingFormLayout.setHorizontalGroup(
             sendingFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sendingFormLayout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(sendingFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(sendBtn)
                     .addGroup(sendingFormLayout.createSequentialGroup()
+                        .addContainerGap(37, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(85, 85, 85)
-                        .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sendingFormLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(sendBtn)))
                 .addGap(48, 48, 48))
         );
         sendingFormLayout.setVerticalGroup(
@@ -134,6 +138,25 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okButton)
                 .addContainerGap(178, Short.MAX_VALUE))
+        );
+
+        alert.setSize(new java.awt.Dimension(250, 150));
+
+        javax.swing.GroupLayout alertLayout = new javax.swing.GroupLayout(alert.getContentPane());
+        alert.getContentPane().setLayout(alertLayout);
+        alertLayout.setHorizontalGroup(
+            alertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(alertLayout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(alertLabel)
+                .addContainerGap(341, Short.MAX_VALUE))
+        );
+        alertLayout.setVerticalGroup(
+            alertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(alertLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(alertLabel)
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         preparingBtn.setText("Preparing");
@@ -270,21 +293,23 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
 
     private void preparingBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_preparingBtnMouseClicked
         // TODO add your handling code here:
-        deliveryNoteCtl.changeDeliveryNoteStatus("preparing");
+        deliveryNoteCtl.changeDeliveryNoteStatus("preparing", deliveryNoteNumberLabel.getText());
     }//GEN-LAST:event_preparingBtnMouseClicked
 
     private void pendingBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pendingBtnMouseClicked
         // TODO add your handling code here:
-        deliveryNoteCtl.changeDeliveryNoteStatus("pending");
+        deliveryNoteCtl.changeDeliveryNoteStatus("pending", deliveryNoteNumberLabel.getText());
     }//GEN-LAST:event_pendingBtnMouseClicked
 
     private void signBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signBtnMouseClicked
         // TODO add your handling code here:
-        deliveryNoteCtl.changeDeliveryNoteStatus("completed");
+        deliveryNoteCtl.changeDeliveryNoteStatus("completed", deliveryNoteNumberLabel.getText());
     }//GEN-LAST:event_signBtnMouseClicked
 
     private void emailBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_emailBtnMouseClicked
         // TODO add your handling code here:
+        emailTF.setText("");
+        
         sendingForm.setVisible(true);
     }//GEN-LAST:event_emailBtnMouseClicked
 
@@ -292,7 +317,9 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         // TODO add your handling code here:
 
 //        tampilin alert
-
+        createAlert("Delivery Note Sent !");
+        alert.setVisible(true);
+        
         sendSoftcopyDone();
     }//GEN-LAST:event_sendBtnMouseClicked
 
@@ -306,42 +333,9 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         printDeliveryNote();
     }//GEN-LAST:event_okButtonMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DeliveryNoteDetailPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DeliveryNoteDetailPage().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog alert;
+    private javax.swing.JLabel alertLabel;
     private javax.swing.JCheckBox barcodeCB;
     private javax.swing.JLabel customerEmailAddressLabel;
     private javax.swing.JLabel customerNameLabel;
@@ -393,5 +387,9 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         orderDateLabel.setText(deliveryNote.getOrderDate());
         deliveryDateLabel.setText(deliveryNote.getDeliveryDate());
         statusLabel.setText(deliveryNote.getStatus());
+    }
+
+    private void createAlert(String text) {
+        alertLabel.setText(text);
     }
 }

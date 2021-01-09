@@ -37,10 +37,20 @@ public class ViewDeliveryNoteCtl {
     }
 
     void searchDeliveryNote(String text) {
-        String[] result = dbHandler.searchDeliveryNote(text);
-//        DeliveryNote[] deliveryNote = createDeliveryNote(result);
+        DeliveryNote[] deliveryNote = dbHandler.searchDeliveryNote(text);
         
-//        mainPage.showListOfDeliveryNote(deliveryNote);
+        Object[][] data = new Object[deliveryNote.length][7];
+        for(int i=0; i<deliveryNote.length; i++){
+            data[i][0] = deliveryNote[i].getInvoiceNumber();
+            data[i][1] = deliveryNote[i].getDeliveryNoteNumber();
+            data[i][2] = deliveryNote[i].getCustomerName();
+            data[i][3] = deliveryNote[i].getCustomerEmailAddress();
+            data[i][4] = deliveryNote[i].getOrderDate();
+            data[i][5] = deliveryNote[i].getDeliveryDate();
+            data[i][6] = deliveryNote[i].getStatus();
+        }
+        
+        mainPage.showListOfDeliveryNote(data);
     }
     
     int findDeliveryNoteNo(String name) {
