@@ -85,8 +85,6 @@ public class DeliveryNoteForm extends javax.swing.JFrame {
                 .addContainerGap(184, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         invoiceNumberLabel.setText("invoice number");
 
         deliveryNoteNumberLabel.setText("delivery note number");

@@ -37,8 +37,6 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
         barcodeCB = new javax.swing.JCheckBox();
-        alert = new javax.swing.JDialog();
-        alertLabel = new javax.swing.JLabel();
         preparingBtn = new javax.swing.JButton();
         signBtn = new javax.swing.JButton();
         pendingBtn = new javax.swing.JButton();
@@ -138,25 +136,6 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(okButton)
                 .addContainerGap(178, Short.MAX_VALUE))
-        );
-
-        alert.setSize(new java.awt.Dimension(250, 150));
-
-        javax.swing.GroupLayout alertLayout = new javax.swing.GroupLayout(alert.getContentPane());
-        alert.getContentPane().setLayout(alertLayout);
-        alertLayout.setHorizontalGroup(
-            alertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(alertLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(alertLabel)
-                .addContainerGap(341, Short.MAX_VALUE))
-        );
-        alertLayout.setVerticalGroup(
-            alertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(alertLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(alertLabel)
-                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         preparingBtn.setText("Preparing");
@@ -315,9 +294,9 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
 
     private void sendBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sendBtnMouseClicked
         // TODO add your handling code here:
-
+        
 //        tampilin alert
-        createAlert("Delivery Note Sent !");
+        Alert alert = new Alert("Delivery Note Sent !", 3);
         alert.setVisible(true);
         
         sendSoftcopyDone();
@@ -334,8 +313,6 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
     }//GEN-LAST:event_okButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog alert;
-    private javax.swing.JLabel alertLabel;
     private javax.swing.JCheckBox barcodeCB;
     private javax.swing.JLabel customerEmailAddressLabel;
     private javax.swing.JLabel customerNameLabel;
@@ -389,7 +366,4 @@ public class DeliveryNoteDetailPage extends javax.swing.JFrame {
         statusLabel.setText(deliveryNote.getStatus());
     }
 
-    private void createAlert(String text) {
-        alertLabel.setText(text);
-    }
 }

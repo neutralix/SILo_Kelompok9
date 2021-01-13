@@ -12,13 +12,16 @@ package silo;
 public class ItemForm extends javax.swing.JFrame {
 
     private ItemCtl itemCtl;
-    private int state;
+    private int formType;
+    private FormState formState = null;
     
     /**
      * Creates new form ItemForm
      */
     public ItemForm() {
         initComponents();
+        
+        formState = new Unfilled(this);
     }
 
     /**
@@ -195,10 +198,11 @@ public class ItemForm extends javax.swing.JFrame {
 
     private void submitButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitButtonMouseClicked
         // TODO add your handling code here:
+        checkForm();
         
 //        send all field data
-        if (state == 1) {
-            if (isFieldEmpty() == 0)
+        if (formType == 1) {
+            if (formState instanceof Filled)
                 itemCtl.sendData(new Item(
                     itemIdTF.getText(),
                     barcodeTF.getText(),
@@ -260,13 +264,6 @@ public class ItemForm extends javax.swing.JFrame {
         this.itemCtl = itemCtl;
     }
 
-    private int isFieldEmpty() {
-        if (itemIdTF.getText().equals("") || barcodeTF.getText().equals("") || titleTF.getText().equals("") || descriptionTF.getText().equals("") || manufacturerTF.getText().equals("") || urlTF.getText().equals("") || numberOfStockTF.getText().equals(""))
-            return 1;
-        else
-            return 0;
-    }
-
     private void cancelAddNewItem() {
         exceptionDialog.setVisible(false);
         itemCtl.cancelAddNewItem();
@@ -281,14 +278,14 @@ public class ItemForm extends javax.swing.JFrame {
         urlTF.setText("");
         numberOfStockTF.setText("");
         
-        if(state == 1)
+        if(formType == 1)
             submitButton.setText("Submit");
         else 
             submitButton.setText("Update");
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setFormType(int formType) {
+        this.formType = formType;
     }
 
     void prepareEditedItem(Item item) {
@@ -299,5 +296,16 @@ public class ItemForm extends javax.swing.JFrame {
         manufacturerTF.setText(item.getManufacturer());
         urlTF.setText(item.getUrl());
         numberOfStockTF.setText(Integer.toString(item.getNumberOfStock()));
+    }
+    
+    public void changeState(FormState curstate) {
+        formState = curstate;
+    }
+    
+    private void checkForm() {
+        if (itemIdTF.getText().equals("") || barcodeTF.getText().equals("") || titleTF.getText().equals("") || descriptionTF.getText().equals("") || manufacturerTF.getText().equals("") || urlTF.getText().equals("") || numberOfStockTF.getText().equals(""))
+            formState.formEmpty();
+        else
+            formState.formFilled();
     }
 }

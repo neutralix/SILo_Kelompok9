@@ -22,13 +22,13 @@ public class ItemCtl {
     }
     
     public void requestNewItemForm() {
-        newItemForm.setState(1);
+        newItemForm.setFormType(1);
         newItemForm.clearForm();
         
         newItemForm.setVisible(true);
     }
     public void requestEditItemForm() {
-        newItemForm.setState(2);
+        newItemForm.setFormType(2);
         newItemForm.clearForm();
         
         Item[] item = dbHandler.getListOfItem();

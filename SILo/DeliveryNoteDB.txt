@@ -1,4 +1,4 @@
 INV001/DEN001/John/john@gmail.com/01-01-2021/03-01-2021/completed
-INV002/DEN002/Benny/benny@gmail.com/08-01-2021/10-01-2021/completed
+INV002/DEN002/Benny/benny@gmail.com/08-01-2021/10-01-2021/pending
 INV003/DEN003/Vincent/vincent@gmail.com/09-01-2021/12-01-2021/new
 INV004/DEN004/Sven/sven@gmail.com/10-01-2021/15-01-2021/new

@@ -30,10 +30,6 @@ public class DeliveryNoteCtl {
         deliveryNoteDetailPage.setVisible(true);
     }
 
-    private DeliveryNote[] createDeliveryNote(String[] result) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     void changeDeliveryNoteStatus(String status, String deliveryNoteNumber) {
         deliveryNoteDetailPage.setVisible(false);
         
